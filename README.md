@@ -1,4 +1,4 @@
-#ruTorrent with the material design theme added. On github for easier updates. 
+#ruTorrent with the material design theme and AutoDL plugin added. Also a couple minor tweaks to make it work better on ubuntu server 16.04. On github for easier updates. 
 
 #ruTorrent
 
