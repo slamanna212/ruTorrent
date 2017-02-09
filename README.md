@@ -1,3 +1,5 @@
+#ruTorrent with the material design theme added. On github for easier updates. 
+
 #ruTorrent
 
 ruTorrent is a front-end for the popular Bittorrent client [rtorrent](http://rakshasa.github.io/rtorrent).
