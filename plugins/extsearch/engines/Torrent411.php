@@ -2,177 +2,210 @@
 
 class Torrent411Engine extends commonEngine
 {
-    public $defaults = array("public" => false, "page_size" => 50, "cookies" => "www.t411.li|uid=XXX;pass=XXX;authKey=XXX");
-    
-    public $categories = array(
-		'Tout' => '',
-		'|--Audio' => '&cat=395',
-		'|--|--Karaoke' => '&subcat=400',
-		'|--|--Musique' => '&subcat=623',
-		'|--|--Samples' => '&subcat=403',
-		'|--eBook' => '&cat=404',
-		'|--|--Audio' => '&subcat=405',
-		'|--|--Bds' => '&subcat=406',
-		'|--|--Comics' => '&subcat=407',
-		'|--|--Livres' => '&subcat=408',
-		'|--|--Mangas' => '&subcat=409',
-		'|--|--Presse' => '&subcat=410',
-		'|--Emulation' => '&cat=340',
-		'|--|--Emulateurs' => '&subcat=342',
-		'|--|--Roms' => '&subcat=344',
-		'|--Jeu vidéo' => '&cat=624',
-		'|--|--Linux' => '&subcat=239',
-		'|--|--MacOS' => '&subcat=245',
-		'|--|--Windows' => '&subcat=246',
-		'|--|--Microsoft' => '&subcat=309',
-		'|--|--|--Xbox' => '&term%5B36%5D%5B%5D=704',
-		'|--|--|--Xbox 360' => '&term%5B36%5D%5B%5D=705',
-		'|--|--|--Xbox One' => '&term%5B36%5D%5B%5D=1158',
-		'|--|--Nintendo' => '&subcat=307',
-		'|--|--|--3Ds' => '&term%5B37%5D%5B%5D=702',
-		'|--|--|--Ds' => '&term%5B37%5D%5B%5D=701',
-		'|--|--|--Gamecube' => '&term%5B37%5D%5B%5D=738',
-		'|--|--|--Wii' => '&term%5B37%5D%5B%5D=703',
-		'|--|--|--WiiU' => '&term%5B37%5D%5B%5D=1126',
-		'|--|--Sony' => '&subcat=308',
-		'|--|--|--Playstation' => '&term%5B18%5D%5B%5D=613',
-		'|--|--|--Playstation2' => '&term%5B18%5D%5B%5D=614',
-		'|--|--|--Playstation3' => '&term%5B18%5D%5B%5D=617',
-		'|--|--|--Playstation4' => '&term%5B18%5D%5B%5D=1159',
-		'|--|--|--Psp' => '&term%5B18%5D%5B%5D=615',
-		'|--|--|--Vita' => '&term%5B18%5D%5B%5D=921',
-		'|--|--Smartphone' => '&subcat=626',
-		'|--|--Tablette' => '&subcat=628',
-		'|--|--Autre' => '&subcat=630',
-		'|--GPS' => '&cat=392',
-		'|--|--Applications' => '&subcat=391',
-		'|--|--Cartes' => '&subcat=393',
-		'|--|--Divers' => '&subcat=394',
-		'|--Application' => '&cat=233',
-		'|--|--Linux' => '&subcat=234',
-		'|--|--MacOS' => '&subcat=235',
-		'|--|--Windows' => '&subcat=236',
-		'|--|--Smartphone' => '&subcat=625',
-		'|--|--Tablette' => '&subcat=627',
-		'|--|--Formation' => '&subcat=638',
-		'|--|--Autre' => '&subcat=629',
-		'|--Film/Vidéo' => '&cat=210',
-		'|--|--Animation' => '&subcat=455',
-		'|--|--Animation Série' => '&subcat=637',
-		'|--|--Concert' => '&subcat=633',
-		'|--|--Documentaire' => '&subcat=634',
-		'|--|--Emission TV' => '&subcat=639',
-		'|--|--Film' => '&subcat=631',
-		'|--|--Série TV' => '&subcat=433',
-		'|--|--Spectacle' => '&subcat=635',
-		'|--|--Sport' => '&subcat=636',
-		'|--|--Vidéo-clips' => '&subcat=402',
-		'|--xXx' => '&cat=456',
-		'|--|--eBooks' => '&subcat=461',
-		'|--|--Jeux vidéo' => '&subcat=462',
-		'|--|--Vidéo' => '&subcat=632'
+	public $defaults = array( "public"=>true, "page_size"=>20 );
+
+	public $categories = array(
+			'Tout' => '',
+			'|--Films' => '&category=1',
+			'|--F--HD 720p' => '&subcategory=100',
+			'|--F--HD 1080p' => '&subcategory=101',
+			'|--F--HD 4k' => '&subcategory=102',
+			'|--F--3D' => '&subcategory=103',
+			'|--F--VF' => '&subcategory=104',
+			'|--F--VOSTFR' => '&subcategory=105',
+			'|--F--VO' => '&subcategory=106',
+			'|--F--TRUEFRENCH' => '&subcategory=107',
+			'|--F--MULTI' => '&subcategory=108',
+			'|--F--Animation' => '&subcategory=110',
+			'|--F--VFQ' => '&subcategory=111',
+			'|--F--DVDRiP' => '&subcategory=112',
+			'|--F--Autres' => '&subcategory=199',
+			'|--Séries' => '&category=2',
+			'|--S--HD 720p' => '&subcategory=200',
+			'|--S--HD 1080p' => '&subcategory=201',
+			'|--S--HD 4k' => '&subcategory=202',
+			'|--S--3D' => '&subcategory=203',
+			'|--S--VF' => '&subcategory=204',
+			'|--S--VOSTFR' => '&subcategory=205',
+			'|--S--VO' => '&subcategory=206',
+			'|--S--MULTI' => '&subcategory=207',
+			'|--S--Animation' => '&subcategory=208',
+			'|--S--Émissions' => '&subcategory=209',
+			'|--S--VFQ' => '&subcategory=211',
+			'|--S--Autres' => '&subcategory=299',
+			'|--Animes' => '&category=3',
+			'|--A--HD 720p' => '&subcategory=300',
+			'|--A--HD 1080p' => '&subcategory=301',
+			'|--A--VF' => '&subcategory=302',
+			'|--A--VOSTFR' => '&subcategory=303',
+			'|--A--VO' => '&subcategory=304',
+			'|--A--Autres' => '&subcategory=305',
+			'|--A--MULTI' => '&subcategory=306',
+			'|--Musique' => '&category=4',
+			'|--M--FLAC' => '&subcategory=401',
+			'|--M--MP3' => '&subcategory=402',
+			'|--M--Wav' => '&subcategory=403',
+			'|--M--Autres' => '&subcategory=404',
+			'|--Ebooks' => '&category=5',
+			'|--E--Ebook en Français' => '&subcategory=501',
+			'|--E--Ebook en Anglais' => '&subcategory=502',
+			'|--E--Livres Audio en Français' => '&subcategory=503',
+			'|--E--Livres Audio en Anglais' => '&subcategory=504',
+			'|--E--BD' => '&subcategory=505',
+			'|--E--Comics' => '&subcategory=506',
+			'|--E--Mangas' => '&subcategory=507',
+			'|--E--Magazine' => '&subcategory=508',
+			'|--E--Autres' => '&subcategory=599',
+			'|--Logiciels' => '&category=6',
+			'|--L--PC' => '&subcategory=600',
+			'|--L--Mac' => '&subcategory=601',
+			'|--L--Linux' => '&subcategory=602',
+			'|--L--iPhone' => '&subcategory=603',
+			'|--L--Android' => '&subcategory=604',
+			'|--L--VST' => '&subcategory=605',
+			'|--L--Autres' => '&subcategory=699',
+			'|--Jeux' => '&category=7',
+			'|--J--Consoles' => '&subcategory=700',
+			'|--J--PC' => '&subcategory=701',
+			'|--J--Linux' => '&subcategory=702',
+			'|--J--Nintendo Switch' => '&subcategory=703',
+			'|--J--Xbox One' => '&subcategory=704',
+			'|--J--Playstation 4' => '&subcategory=705',
+			'|--J--Nintendo 3DS' => '&subcategory=706',
+			'|--J--Playstation Vita' => '&subcategory=707',
+			'|--J--Wii U' => '&subcategory=708',
+			'|--J--Wii' => '&subcategory=709',
+			'|--J--Nintendo DS' => '&subcategory=710',
+			'|--J--Xbox 360' => '&subcategory=711',
+			'|--J--Playstation 3' => '&subcategory=712',
+			'|--J--PSP' => '&subcategory=713',
+			'|--J--ROMs' => '&subcategory=714',
+			'|--J--Playstation 2' => '&subcategory=715',
+			'|--J--Playstation 1' => '&subcategory=716',
+			'|--J--iPhone' => '&subcategory=717',
+			'|--J--Android' => '&subcategory=718',
+			'|--J--Autres' => '&subcategory=799',
+			'|--Documentaires' => '&category=8',
+			'|--D--HD 720p' => '&subcategory=800',
+			'|--D--HD 1080p' => 'subcategory=801',
+			'|--D--HD 4k' => '&subcategory=802',
+			'|--D--DVDRIP' => '&subcategory=803',
+			'|--D--VF' => '&subcategory=804',
+			'|--D--VFQ' => '&subcategory=805',
+			'|--D--VOSTFR' => '&subcategory=806',
+			'|--D--VO' => '&subcategory=807',
+			'|--D--TRUEFRENCH' => '&subcategory=808',
+			'|--D--MULTI' => '&subcategory=809',
+			'|--D--3D' => '&subcategory=810',
+			'|--D--Documentaire animé' => '&subcategory=811',
+			'|--D--Autres' => '&subcategory=899',
+			'|--XXX' => '&category=9',
+			'|--X--Animation' => '&subcategory=901',
+			'|--X--Hentai' => '&subcategory=902',
+			'|--X--Français' => '&subcategory=903',
+			'|--X--Hétéro' => '&subcategory=904',
+			'|--X--Gay' => '&subcategory=905',
+			'|--X--Shemale' => '&subcategory=906',
+			'|--X--Autres' => '&subcategory=999'
+			);
+
+
+	protected static $seconds = array
+	(
+		'seconde'	=>1,
+		'minute'	=>60,
+		'heure'		=>3600,
+		'jour'		=>86400,
+		'semaine'	=>604800,
+		'mois'		=>2592000,
+		'an'		=>31536000
 	);
-    
-    public function action($what, $cat, &$ret, $limit, $useGlobalCats)
-    {
-        $catid = array(
-            '400' => 'Audio > Karaoke',
-            '623' => 'Audio > Musique',
-            '403' => 'Audio > Samples',
-            '405' => 'eBook > Audio',
-            '406' => 'eBook > Bds',
-            '407' => 'eBook > Comics',
-            '408' => 'eBook > Livres',
-            '409' => 'eBook > Mangas',
-            '410' => 'eBook > Presse',
-            '342' => 'Emulation > Emulateurs',
-            '344' => 'Emulation > Roms',
-            '239' => 'Jeu vidéo > Linux',
-            '245' => 'Jeu vidéo > MacOS',
-            '246' => 'Jeu vidéo > Windows',
-            '309' => 'Jeu vidéo > Microsoft',
-            '307' => 'Jeu vidéo > Nintendo',
-            '308' => 'Jeu vidéo > Sony',
-            '626' => 'Jeu vidéo > Smartphone',
-            '628' => 'Jeu vidéo > Tablette',
-            '630' => 'Jeu vidéo > Autre',
-            '391' => 'GPS > Applications',
-            '393' => 'GPS > Cartes',
-            '394' => 'GPS > Divers',
-            '234' => 'Application > Linux',
-            '235' => 'Application > MacOS',
-            '236' => 'Application > Windows',
-            '625' => 'Application > Smartphone',
-            '627' => 'Application > Tablette',
-            '638' => 'Application > Formation',
-            '629' => 'Application > Autre',
-            '455' => 'Film/Vidéo > Animation',
-            '637' => 'Film/Vidéo > Animation Série',
-            '633' => 'Film/Vidéo > Concert',
-            '634' => 'Film/Vidéo > Documentaire',
-            '639' => 'Film/Vidéo > Emission TV',
-            '631' => 'Film/Vidéo > Film',
-            '433' => 'Film/Vidéo > Série TV',
-            '635' => 'Film/Vidéo > Spectacle',
-            '636' => 'Film/Vidéo > Sport',
-            '402' => 'Film/Vidéo > Vidéo-clips',
-            '461' => 'xXx > eBooks',
-			'462' => 'xXx > Jeux Vidéo',
-			'632' => 'xXx > Vidéo'
-        );
-        $added = 0;
-        $url   = 'https://www.t411.li';
-        if ($useGlobalCats)
-            $categories = array(
-                'all' => '',
-                'movies' => '&cat=210',
-                'music' => '&cat=395',
-                'software' => '&cat=233',
-                'books' => '&cat=404'
-            );
-        else
-            $categories =& $this->categories;
-        if (!array_key_exists($cat, $categories))
-            $cat = $categories['all'];
-        else
-            $cat = $categories[$cat];
-        $what = rawurlencode(rawurldecode($what));
-        for ($pg = 0; $pg < 11; $pg++) {
-            if ($what === '%2A')
-                $search = $url . '/torrents/search/?search=' . $cat . '&order=added&type=desc&page=' . $pg;
-            else
-                $search = $url . '/torrents/search/?search=' . $what . $cat . '&order=added&type=desc&page=' . $pg;
-            $cli = $this->fetch($search);
-            if (($cli == false) || (strpos($cli->results, ">Aucun Résultat Aucun<") !== false))
-                break;
-            $res = preg_match_all(	
-				'`<a href="/torrents/search/\?subcat=(?P<catid>\d+)">.*'.
-				'<a href="(?P<desc>[^"]*)" title="(?P<name>.*)">.*<dl>.*'.
-				'<dt>.*</dt>.*<dd>(?P<date>.*)</dd>.*<a href="/torrents/nfo/\?id=(?P<id>.*)".*'.
-				'</td>.*<td.*>.*</td>.*<td.*>.*</td>.*<td.*>(?P<size>.*)</td>.*<td.*>.*</td>.*'.
-				'<td.*>(?P<seeds>.*)</td>.*<td.*>(?P<leech>.*)'.
-				'</td>`siU', $cli->results, $matches);
-            if ($res) {
-                for ($i = 0; $i < $res; $i++) {
-                    $matches["date"][$i] = substr($matches["date"][$i], 0, strrpos($matches["date"][$i], ' '));
-                    $link                = $url . "/torrents/download/?id=" . $matches["id"][$i];
-                    if (!array_key_exists($link, $ret)) {
-                        $item          = $this->getNewEntry();
-                        $item["desc"]  = "https:" . $matches["desc"][$i];
-                        $item["name"]  = self::removeTags($matches["name"][$i]);
-                        $item["size"]  = self::formatSize($matches["size"][$i]);
-                        $item["cat"]   = $catid[$matches["catid"][$i]];
-                        $item["time"]  = strtotime(self::removeTags($matches["date"][$i]));
-                        $item["seeds"] = intval(self::removeTags($matches["seeds"][$i]));
-                        $item["peers"] = intval(self::removeTags($matches["leech"][$i]));
-                        $ret[$link]    = $item;
-                        $added++;
-                        if ($added >= $limit)
-                            return;
-                    }
-                }
-            } else
-                break;
-        }
-    }
+
+	protected static function getTime( $now, $ago, $unit )
+	{
+		$delta = (array_key_exists($unit,self::$seconds) ? self::$seconds[$unit] : 0);
+		return( $now-($ago*$delta) );
+	}
+
+	private $category_mapping = array(
+			'1' => 'Films',
+			'2' => 'Séries',
+			'3' => 'Animes',
+			'4' => 'Musique',
+			'5' => 'Ebooks',
+			'6' => 'Logiciels',
+			'7' => 'Jeux',
+			'8' => 'Documentaires',
+			'9' => 'XXX'
+			);
+
+	public function action($what,$cat,&$ret,$limit,$useGlobalCats)
+	{
+		$added = 0;
+		$url = 'https://t411.si';
+		if($useGlobalCats)
+			$categories = array( 'all'=>'', 'movies'=>"&category=1", 'music'=>"&category=4", 'games'=>"&category=7",
+					'anime'=>"&category=3", 'software'=>"&category=6", 'books'=>"&category=5" );
+		else
+			$categories = &$this->categories;
+		if(!array_key_exists($cat,$categories))
+			$cat = $categories['all'];
+		else
+			$cat = $categories[$cat];
+		for($pg = 1; $pg<11; $pg++)
+		{
+			$cli = $this->fetch( $url.'/torrents/search/?search='.$what.$cat.'&sortby=seeds&sort=desc&page='.$pg );
+			if( ($cli==false) || (strpos($cli->results, 'class="m-cat"')===false) )
+				break;
+
+			$res = preg_match_all('`class="m-cat"><a href="/torrents/search/.*category=(?P<catid>\d)">.*'.
+				'<a href="(?P<desc>.*)">(?P<name>.*)</a>.*'.
+				'<span>.*</span>.*'.
+				'<span>(?P<ago>\d+) (?P<unit>(seconde|minute|heure|jour|semaine|mois|an)).*</span>.*'.
+				'<span>(?P<size>.*)</span>.*'.
+				'<span.*>(?P<seeder>.*)</span>.*'.
+				'<span.*>(?P<leecher>.*)</span>'.
+				'`siU', $cli->results, $matches);
+
+			if($res)
+			{
+				$now = time();
+				for($i = 0; $i < $res; $i++)
+				{
+					// Download link not working:
+					// Rquires "hash-info" - not "torrent id" - of the torrent
+					// Not available in torrents search page
+					$name = self::removeTags(trim($matches["name"][$i]));
+					$id = explode("/",$matches["desc"][$i])[2];
+					$link = $url."/telecharger-torrent/".$id."/".$name.".torrent";
+					if(!array_key_exists($link,$ret))
+					{
+						$item = $this->getNewEntry();
+						$item["cat"] = $this->getCategoryName($matches["catid"][$i]);
+						$item["desc"] = $url.$matches["desc"][$i];
+						$item["name"] = $name;
+						$item["size"] = self::formatSize($matches["size"][$i]);
+						$item["time"] = self::getTime( $now, $matches["ago"][$i], $matches["unit"][$i] );
+						$item["seeds"] = intval(self::removeTags($matches["seeder"][$i]));
+						$item["peers"] = intval(self::removeTags($matches["leecher"][$i]));
+						$ret[$link] = $item;
+						$added++;
+						if($added>=$limit)
+							return;
+					}
+				}
+			}
+			else
+				break;
+		}
+	}
+
+	private function getCategoryName($catid)
+	{
+		if (array_key_exists($catid, $this->category_mapping)) {
+			return $this->category_mapping[$catid];
+		} else {
+			return;
+		}
+	}
 }
